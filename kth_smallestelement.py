@@ -6,7 +6,7 @@ class Maxheap:
         return (i-1)//2
 
     def left_child(self,i):
-        return i*1+1
+        return 2 * i + 1
 
     def right_child(self,i):
         return i*2+2
@@ -25,7 +25,7 @@ class Maxheap:
     #push and Heapify
     def push(self, val):
         self.heap.append(val)
-        self._heapfy_up(len(self.heap)-1)
+        self._heapify_up(len(self.heap)-1)
 
     def _heapify_up(self, i):
         while i > 0:
@@ -73,3 +73,18 @@ class Maxheap:
                 break
 
 
+def kth_smallest(arr, k):
+    max_heap = Maxheap()
+    for num in arr:
+        max_heap.push(num)
+        # Agar heap size k se bada ho jaye, toh sabse bada element pop karo
+        if max_heap.size() > k:
+            max_heap.pop()
+
+    # Heap ke top par Kth smallest element hoga
+    return max_heap.peek()
+
+# Example Test
+arr = [7, 10, 4, 3, 20, 15]
+k = 3
+print(f"{k}th smallest element is:", kth_smallest(arr, k)) # Output: 7
