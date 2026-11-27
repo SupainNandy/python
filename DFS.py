@@ -44,7 +44,7 @@ while s.size()>0:
     node = s.pop()
     ans.append(node)
 
-    for x in adjList[node]:
+    for x in adjList[node]: 
         if not visited[x]:
             s.push(x)
             visited[x]=True
